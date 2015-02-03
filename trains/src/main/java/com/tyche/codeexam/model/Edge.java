@@ -23,6 +23,10 @@ public class Edge {
 		return tail;
 	}
 
+	public String getName() {
+		return head.getName().concat(tail.getName());
+	}
+
 	@Override
 	public String toString() {
 		return "Edge [head=" + head + ", tail=" + tail + "]";
