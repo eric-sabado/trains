@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Digraph {
 	public static final String NO_SUCH_ROUTE = "NO SUCH ROUTE";
-	
+
 	private Set<Node> nodes;
 	private Map<String, Edge> edges;
 
@@ -22,18 +22,27 @@ public class Digraph {
 		registerNodes(edge);
 	}
 
-	public Float computeWeight(List<Edge> edgeQueries) throws Exception {
+	public Float computeWeight(List<Node> nodeList) throws Exception {
 		Float totalWeight = Float.valueOf(0);
 
-		for (Edge edgeQuery : edgeQueries) {
-			Edge edge = edges.get(edgeQuery.getName());
-			if (null == edge) {
-				throw new Exception(NO_SUCH_ROUTE);
-			}
-
-			totalWeight += edge.getWeight();
+		for (int i = 0; i < nodeList.size()-1; i++) {
+			totalWeight += extractEdge(nodeList, i).getWeight();
 		}
 		return totalWeight;
+	}
+
+	private Edge extractEdge(List<Node> nodeList, int i) throws Exception {
+		Node currentNode = nodeList.get(i);
+		Node adjacentNode = nodeList.get(i+1);
+		
+		String nodeKey = currentNode.getName().concat(adjacentNode.getName());
+		Edge edge = edges.get(nodeKey);
+		
+		if (null == edge) {
+			throw new Exception(NO_SUCH_ROUTE);
+		}
+		
+		return edge;
 	}
 
 	private void registerNodes(Edge edge) {
