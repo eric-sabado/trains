@@ -1,13 +1,9 @@
 package com.tyche.codeexam.model;
 
-/**
- * @author Eric
- *
- */
-public class Vertex {
+public class Node {
 	private String name;
 
-	public Vertex(String name) {
+	public Node(String name) {
 		this.name = name;
 	}
 
