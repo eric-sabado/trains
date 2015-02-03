@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Digraph {
-	public static final String NO_SUCH_ROUTE = "NO SUCH ROUTE";
+import com.tyche.codeexam.exception.MissingRouteException;
 
+public class Digraph {
 	private Set<Node> nodes;
 	private Map<String, Edge> edges;
 
@@ -22,26 +22,32 @@ public class Digraph {
 		registerNodes(edge);
 	}
 
-	public Float computeWeight(List<Node> nodeList) throws Exception {
+	public void addEdge(List<Edge> edges) {
+		for (Edge edge : edges) {
+			this.addEdge(edge);
+		}
+	}
+
+	public Float computeWeight(List<Node> nodeList) throws MissingRouteException {
 		Float totalWeight = Float.valueOf(0);
 
-		for (int i = 0; i < nodeList.size()-1; i++) {
+		for (int i = 0; i < nodeList.size() - 1; i++) {
 			totalWeight += extractEdge(nodeList, i).getWeight();
 		}
 		return totalWeight;
 	}
 
-	private Edge extractEdge(List<Node> nodeList, int i) throws Exception {
+	private Edge extractEdge(List<Node> nodeList, int i) throws MissingRouteException {
 		Node currentNode = nodeList.get(i);
-		Node adjacentNode = nodeList.get(i+1);
-		
+		Node adjacentNode = nodeList.get(i + 1);
+
 		String nodeKey = currentNode.getName().concat(adjacentNode.getName());
 		Edge edge = edges.get(nodeKey);
-		
+
 		if (null == edge) {
-			throw new Exception(NO_SUCH_ROUTE);
+			throw new MissingRouteException();
 		}
-		
+
 		return edge;
 	}
 

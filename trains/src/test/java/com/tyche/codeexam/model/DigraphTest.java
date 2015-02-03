@@ -11,14 +11,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.tyche.codeexam.exception.MissingRouteException;
+
 public class DigraphTest {
-	
+
 	private static final Node NODE_A = new Node("A");
 	private static final Node NODE_B = new Node("B");
 	private static final Node NODE_C = new Node("C");
 	private static final Node NODE_D = new Node("D");
 	private static final Node NODE_E = new Node("E");
-	
+
 	private Digraph digraph;
 
 	private Edge edgeAB5;
@@ -98,7 +100,7 @@ public class DigraphTest {
 		assertEquals(Float.valueOf(22), digraph.computeWeight(params));
 	}
 
-	@Test(expected = Exception.class)
+	@Test(expected = MissingRouteException.class)
 	public void testNoRoute() throws Exception {
 		addAllEdges();
 		List<Node> params = buildParams(NODE_A, NODE_E, NODE_D);
