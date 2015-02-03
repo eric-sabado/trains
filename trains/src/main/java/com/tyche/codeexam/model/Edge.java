@@ -24,11 +24,9 @@ public class Edge {
 	}
 
 	public String getName() {
-		return head.getName().concat(tail.getName());
-	}
-
-	@Override
-	public String toString() {
-		return "Edge [head=" + head + ", tail=" + tail + "]";
+		return new StringBuilder()
+				.append(head.getName())
+				.append(tail.getName())
+				.toString();
 	}
 }
