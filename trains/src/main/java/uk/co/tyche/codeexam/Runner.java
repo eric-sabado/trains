@@ -1,15 +1,15 @@
-package com.tyche.codeexam;
+package uk.co.tyche.codeexam;
 
-import static com.tyche.codeexam.util.CommandStringParser.toEdges;
-import static com.tyche.codeexam.util.CommandStringParser.toNodes;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
+import static uk.co.tyche.codeexam.util.CommandStringParser.toEdges;
+import static uk.co.tyche.codeexam.util.CommandStringParser.toNodes;
 
 import java.util.List;
 import java.util.Scanner;
 
-import com.tyche.codeexam.exception.MissingRouteException;
-import com.tyche.codeexam.model.Digraph;
-import com.tyche.codeexam.model.Node;
+import uk.co.tyche.codeexam.exception.MissingRouteException;
+import uk.co.tyche.codeexam.model.Digraph;
+import uk.co.tyche.codeexam.model.Node;
 
 public class Runner {
 

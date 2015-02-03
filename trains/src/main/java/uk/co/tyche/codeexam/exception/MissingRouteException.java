@@ -1,4 +1,4 @@
-package com.tyche.codeexam.exception;
+package uk.co.tyche.codeexam.exception;
 
 public class MissingRouteException extends Exception {
 

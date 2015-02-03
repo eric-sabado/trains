@@ -1,4 +1,4 @@
-package com.tyche.codeexam.model;
+package uk.co.tyche.codeexam.model;
 
 public class Node {
 	private String name;

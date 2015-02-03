@@ -1,4 +1,4 @@
-package com.tyche.codeexam.util;
+package uk.co.tyche.codeexam.util;
 
 import static org.apache.commons.lang3.StringUtils.trim;
 import static org.apache.commons.lang3.StringUtils.deleteWhitespace;
@@ -7,8 +7,8 @@ import static org.apache.commons.lang3.math.NumberUtils.toFloat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tyche.codeexam.model.Edge;
-import com.tyche.codeexam.model.Node;
+import uk.co.tyche.codeexam.model.Edge;
+import uk.co.tyche.codeexam.model.Node;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package com.tyche.codeexam.model;
+package uk.co.tyche.codeexam.model;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.tyche.codeexam.exception.MissingRouteException;
+import uk.co.tyche.codeexam.exception.MissingRouteException;
 
 public class Digraph {
 	private Set<Node> nodes;

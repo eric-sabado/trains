@@ -1,4 +1,4 @@
-package com.tyche.codeexam.model;
+package uk.co.tyche.codeexam.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -11,7 +11,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.tyche.codeexam.exception.MissingRouteException;
+import uk.co.tyche.codeexam.exception.MissingRouteException;
+import uk.co.tyche.codeexam.model.Digraph;
+import uk.co.tyche.codeexam.model.Edge;
+import uk.co.tyche.codeexam.model.Node;
 
 public class DigraphTest {
 
