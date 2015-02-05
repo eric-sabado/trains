@@ -1,14 +1,15 @@
 package uk.co.tyche.codeexam;
 
-import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static uk.co.tyche.codeexam.util.CommandStringParser.toEdges;
 import static uk.co.tyche.codeexam.util.CommandStringParser.toNodes;
 
 import java.util.List;
 import java.util.Scanner;
 
+import uk.co.tyche.codeexam.exception.FormatException;
 import uk.co.tyche.codeexam.exception.MissingRouteException;
 import uk.co.tyche.codeexam.model.Digraph;
+import uk.co.tyche.codeexam.model.Edge;
 import uk.co.tyche.codeexam.model.Node;
 
 public class Runner {
@@ -16,7 +17,6 @@ public class Runner {
 	private static Digraph digraph;
 	private static List<Node> nodeQuery;
 	private static Scanner scanner;
-	private static String digraphString;
 
 	static {
 		digraph = new Digraph();
@@ -31,24 +31,23 @@ public class Runner {
 	private static void captureDigraphCommand() {
 		System.out.println("Direct Graph Definition: ");
 
-		digraphString = scanner.next();
-		if (isEmpty(digraphString)) {
-			captureDigraphCommand();
-		} else {
+		try {
 			buildDigraph();
+		} catch (FormatException e) {
+			captureDigraphCommand();
 		}
 	}
 
 	private static void captureNodeQueryCommand() {
 		System.out.println("Route? ");
 
-		buildNodeQuery(scanner.next());
+		buildNodeQuery();
 		computePath();
 		captureNodeQueryCommand();
 	}
 
-	private static void buildNodeQuery(String routeCommandString) {
-		nodeQuery = toNodes(routeCommandString);
+	private static void buildNodeQuery() {
+		nodeQuery = toNodes(scanner.next());
 	}
 
 	private static void computePath() {
@@ -59,7 +58,12 @@ public class Runner {
 		}
 	}
 
-	private static void buildDigraph() {
-		digraph.addEdge(toEdges(digraphString));
+	private static void buildDigraph() throws FormatException {
+		try {
+			List<Edge> edges = toEdges(scanner.next());
+			digraph.addEdge(edges);
+		} catch (FormatException e) {
+			throw e;
+		}
 	}
 }

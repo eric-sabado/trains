@@ -28,21 +28,21 @@ public class Digraph {
 		}
 	}
 
-	public Float computeWeight(List<Node> nodeList) throws MissingRouteException {
+	public Float computeWeight(List<Node> orderedNodes) throws MissingRouteException {
 		Float totalWeight = Float.valueOf(0);
-
-		for (int i = 0; i < nodeList.size() - 1; i++) {
-			totalWeight += extractEdge(nodeList, i).getWeight();
+		for (int i = 0; i < orderedNodes.size() - 1; i++) {
+			totalWeight += extractEdge(orderedNodes, i).getWeight();
 		}
+		
 		return totalWeight;
 	}
 
-	private Edge extractEdge(List<Node> nodeList, int i) throws MissingRouteException {
-		Node currentNode = nodeList.get(i);
-		Node adjacentNode = nodeList.get(i + 1);
+	private Edge extractEdge(List<Node> orderedNodes, int i) throws MissingRouteException {
+		Node currentNode = orderedNodes.get(i);
+		Node adjacentNode = orderedNodes.get(i + 1); 
 
-		String nodeKey = currentNode.getName().concat(adjacentNode.getName());
-		Edge edge = edges.get(nodeKey);
+		String edgeKey = Edge.withNodes(currentNode, adjacentNode).getName();
+		Edge edge = edges.get(edgeKey);
 
 		if (null == edge) {
 			throw new MissingRouteException();
