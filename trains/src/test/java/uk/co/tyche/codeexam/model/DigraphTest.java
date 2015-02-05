@@ -74,7 +74,7 @@ public class DigraphTest {
 	@Test
 	public void testComputeWeightABC() throws Exception {
 		addAllEdges();
-		List<Node> params = buildParams(NODE_A, NODE_B, NODE_C);
+		List<Node> params = asNodeParams(NODE_A, NODE_B, NODE_C);
 
 		assertEquals(Float.valueOf(9), digraph.computeWeight(params));
 	}
@@ -82,7 +82,7 @@ public class DigraphTest {
 	@Test
 	public void testComputeWeightAD() throws Exception {
 		addAllEdges();
-		List<Node> params = buildParams(NODE_A, NODE_D);
+		List<Node> params = asNodeParams(NODE_A, NODE_D);
 
 		assertEquals(Float.valueOf(5), digraph.computeWeight(params));
 	}
@@ -90,7 +90,7 @@ public class DigraphTest {
 	@Test
 	public void testComputeWeightADC() throws Exception {
 		addAllEdges();
-		List<Node> params = buildParams(NODE_A, NODE_D, NODE_C);
+		List<Node> params = asNodeParams(NODE_A, NODE_D, NODE_C);
 
 		assertEquals(Float.valueOf(13), digraph.computeWeight(params));
 	}
@@ -98,7 +98,7 @@ public class DigraphTest {
 	@Test
 	public void testComputeWeightAEBCD() throws Exception {
 		addAllEdges();
-		List<Node> params = buildParams(NODE_A, NODE_E, NODE_B, NODE_C, NODE_D);
+		List<Node> params = asNodeParams(NODE_A, NODE_E, NODE_B, NODE_C, NODE_D);
 
 		assertEquals(Float.valueOf(22), digraph.computeWeight(params));
 	}
@@ -106,7 +106,7 @@ public class DigraphTest {
 	@Test(expected = MissingRouteException.class)
 	public void testNoRoute() throws Exception {
 		addAllEdges();
-		List<Node> params = buildParams(NODE_A, NODE_E, NODE_D);
+		List<Node> params = asNodeParams(NODE_A, NODE_E, NODE_D);
 
 		digraph.computeWeight(params);
 	}
@@ -119,7 +119,7 @@ public class DigraphTest {
 		assertTrue(digraph.getNodes().contains(NODE_B));
 	}
 
-	private List<Node> buildParams(Node... nodes) {
+	private List<Node> asNodeParams(Node... nodes) {
 		if (null != nodes && nodes.length != 0) {
 			return Arrays.asList(nodes);
 		}
